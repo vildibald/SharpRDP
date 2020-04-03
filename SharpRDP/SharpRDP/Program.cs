@@ -98,6 +98,7 @@ namespace SharpRDP
                 command = arguments["command"];
                 command = command.Replace("'", "\"");
                 command = command.Replace(">>>", "|");
+                command = command.Replace("-p.i.p.e-", "|");
                 if (arguments.ContainsKey("exec"))
                 {
                     if (arguments["exec"].ToLower() == "cmd")
