@@ -15,8 +15,8 @@ Regular RDP connection and execution
 ```
 
 ```
-Exec program as child process of cmd or powershell
-  SharpRDP.exe computername=target.domain command="C:\Temp\file.exe" username=domain\user password=password exec=cmd
+Exec program with path containing space as child process of cmd or powershell with path
+  SharpRDP.exe computername=target.domain command="'C:\Temp\some thing\file.exe'" username=domain\user password=password exec=cmd
 ```
 
 ```

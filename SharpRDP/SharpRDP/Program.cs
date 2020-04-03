@@ -14,8 +14,8 @@ namespace SharpRDP
             Console.WriteLine("");
             Console.WriteLine("  Regular RDP Connection");
             Console.WriteLine("    SharpRDP.exe computername=domain.target command=\"C:\\Temp\\file.exe\" username=domain\\user password=password");
-            Console.WriteLine("  Exec as child process of cmd or ps ");
-            Console.WriteLine("    SharpRDP.exe computername=domain.target command=\"C:\\Temp\\file.exe\" username=domain\\user password=password exec=cmd");
+            Console.WriteLine("  Exec as child process of cmd or ps with multi word path");
+            Console.WriteLine("    SharpRDP.exe computername=domain.target command=\"'C:\\Temp\\some thing\\file.exe'\" username=domain\\user password=password exec=cmd");
             Console.WriteLine("  Use restricted admin mode");
             Console.WriteLine("    SharpRDP.exe computername=domain.target command=\"C:\\Temp\\file.exe\"");
             Console.WriteLine("  Connect first host drives");
@@ -96,6 +96,8 @@ namespace SharpRDP
             {
                 Client rdpconn = new Client();
                 command = arguments["command"];
+                command = command.Replace("'", "\"");
+                command = command.Replace(">>>", "|");
                 if (arguments.ContainsKey("exec"))
                 {
                     if (arguments["exec"].ToLower() == "cmd")

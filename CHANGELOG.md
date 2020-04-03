@@ -1,5 +1,10 @@
 # Changelog
 
+## 2020-04-03 by (vildibald)
+
+* Support for multi-word paths in commands.
+	* Example `SharpRDP.exe computername=domain.target command="'C:\\Temp\\some thing\\file.exe'" username=domain\\user password=password exec=cmd`
+
 ## 2020-02-11
 
 ### Added
