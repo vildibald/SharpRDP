@@ -62,11 +62,13 @@ namespace SharpRDP
             bool connectdrive = false;
             bool takeover = false;
             bool nla = false;
-            var connectionTime = 1000;
+            var connectionTime = 2000;
 
             if (arguments.ContainsKey("time"))
             {
-                connectionTime = 1000 * int.Parse(arguments["time"]);
+                var seconds = int.Parse(arguments["time"]);
+                connectionTime = 1000 * seconds;
+                Console.WriteLine($"[+] Connection will be active for {seconds} seconds" );
             }
             
             if (arguments.ContainsKey("username"))

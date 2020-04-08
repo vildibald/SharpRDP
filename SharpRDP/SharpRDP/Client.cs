@@ -167,7 +167,7 @@ namespace SharpRDP
             rdpClientThread.Start();
             while (rdpClientThread.IsAlive)
             {
-                Task.Delay(ConnectionTime).GetAwaiter().GetResult();
+                Task.Delay(1500).GetAwaiter().GetResult();
             }
         }
 
