@@ -62,6 +62,12 @@ namespace SharpRDP
             bool connectdrive = false;
             bool takeover = false;
             bool nla = false;
+            var connectionTime = 1000;
+
+            if (arguments.ContainsKey("time"))
+            {
+                connectionTime = 1000 * int.Parse(arguments["time"]);
+            }
             
             if (arguments.ContainsKey("username"))
             {
@@ -95,6 +101,7 @@ namespace SharpRDP
             if ((arguments.ContainsKey("computername")) && (arguments.ContainsKey("command")))
             {
                 Client rdpconn = new Client();
+                rdpconn.ConnectionTime = connectionTime;
                 command = arguments["command"];
                 command = command.Replace("'", "\"");
                 command = command.Replace(">>>", "|");

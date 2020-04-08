@@ -24,6 +24,8 @@ namespace SharpRDP
         private bool isdrive;
         private bool takeover;
         private bool networkauth;
+        public int ConnectionTime { get; set; } = 2000;
+
         private enum LogonErrors : uint
         {
             ARBITRATION_CODE_BUMP_OPTIONS = 0xFFFFFFFB,
@@ -165,7 +167,7 @@ namespace SharpRDP
             rdpClientThread.Start();
             while (rdpClientThread.IsAlive)
             {
-                Task.Delay(1500).GetAwaiter().GetResult();
+                Task.Delay(ConnectionTime).GetAwaiter().GetResult();
             }
         }
 
@@ -239,7 +241,7 @@ namespace SharpRDP
                 RunRun();
             }
 
-            Thread.Sleep(2000);
+            Thread.Sleep(ConnectionTime);
             Console.WriteLine("[+] Disconnecting from    :  {0}", target);
             rdpSession.Disconnect();
         }
@@ -532,6 +534,7 @@ namespace SharpRDP
             keycode["("] = new Code(new[] { false, false, true, true }, new[] { 0x2a, 0x0a });
             keycode[")"] = new Code(new[] { false, false, true, true }, new[] { 0x2a, 0x0b });
             keycode["_"] = new Code(new[] { false, false, true, true }, new[] { 0x2a, 0x0c });
+            keycode["*"] = new Code(new[] { false, false, true, true }, new[] { 0x2a, 0x09 });
 
             keycode["Win+R+down"] = new Code(new[] { false, false }, new[] { 0x15b, 0x13 });
             keycode["Win+R+up"] = new Code(new[] { true, true }, new[] { 0x15b, 0x13 });
